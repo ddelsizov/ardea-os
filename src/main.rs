@@ -10,9 +10,8 @@ fn panic(_info: &PanicInfo) -> ! {
 }
 
 #[no_mangle]
-pub extern "C" fn _start() -> ! {
-    use core::fmt::Write;
-    vga_buffer::WRITER.lock().write_str("Heshlou agen -> Write_str into VGA Buffer\n").unwrap();
-    write!(vga_buffer::WRITER.lock(), "Writer into buffer via macro -> some garbage: {} {} {}", 42, 3.14, 127).unwrap();
+pub extern "C" fn _start() {
+    println!("Hello, this is print from 'println! macro{}'", "!");
+
     loop {}
 }
