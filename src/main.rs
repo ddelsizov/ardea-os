@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 
-mod vga_buffer;
+use ardea_os::{println, serial_println};
 use core::panic::PanicInfo;
 
 #[panic_handler]
@@ -12,7 +12,8 @@ fn panic(info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub extern "C" fn _start() {
-    println!("Hello, this is print from 'println! macro{}'", "!");
+    println!("Hello, this is println! macro from vga_buffer lib");
+    serial_println!("Hi, this is serial_println! macro form serial lib");
     // panic!("the disco")
 
     loop {}
