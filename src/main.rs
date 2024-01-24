@@ -12,7 +12,12 @@ fn panic(info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
+    println!("Hello World{}", "!");
+
     ardea_os::init();
-    println!("Heshlou{}; {}", "!", "It did not crash!");
+
+    // invoke a breakpoint exception
+    x86_64::instructions::interrupts::int3();
+    println!("It did not crash!");
     loop {}
 }
